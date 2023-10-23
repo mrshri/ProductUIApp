@@ -1,0 +1,54 @@
+<nav class="navBar">
+  <div class="title">
+    <p> ProductUIApp</p>
+  </div>
+  <div class="navigation">
+    <ul>
+      <li><a href="home">Home</a></li>
+      <!-- <li><a href="viewProduct">View Product</a></li> -->
+      <li><a href="addProduct">AddProduct</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div style="text-align: center" >
+  <h1>View Products</h1>
+  <div class="table-responsive">
+    <table
+      class="table "
+      style="border: 5px solid rgba(220, 230, 242, 1)"
+      *ngIf="products"
+    >
+      <tr style="background-color: rgba(220, 230, 242, 1); font-size: 12pt">
+        <th style="text-align: center">Product Id</th>
+        <th style="text-align: center">Product Name</th>
+        <th style="text-align: center">Category</th>
+        <th style="text-align: center">Specification</th>
+        <th style="text-align: center">Price</th>
+        <th style="text-align: center">Quantity Available</th>
+        <th style="text-align: center">Edit Product</th>
+      </tr>
+      <tr *ngFor="let product of products" style="background-color: white">
+        <td>{{ product.productId }}</td>
+        <td>{{ product.productName | titlecase}}</td>
+        <td>{{ product.category | titlecase }}</td>
+        <td>{{ product.specification  }}</td>
+        <td>{{ product.price |currency:"INR" }}</td>
+        <td>{{ product.quantityAvailable }}</td>
+        <td>
+          <button>
+            <a [routerLink]="['/viewProduct', 'edit', product.productId]"
+              ><i class="fa-solid fa-pen-to-square"></i
+            ></a>
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- for showing Appropriate msg About product Availability
+ -->
+ <div *ngIf="showMsgDiv" >
+  <h3 class="Prodavailability jumbotron" >No products available</h3>
+</div>
+</div>

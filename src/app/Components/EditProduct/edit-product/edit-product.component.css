@@ -1,0 +1,33 @@
+/* NavBar */
+.navBar {
+    height: 8vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #26292A;
+    padding-top: 10px;
+  
+  
+  }
+  h1 {
+
+    color: chocolate;
+  }
+  .title{
+    padding-left: 10px;
+  }
+
+  .navigation ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 60px;
+    list-style: none;
+    padding-right: 10px;
+  }
+  
+  .navigation ul li a {
+    text-decoration: none;
+    color: white;
+  }

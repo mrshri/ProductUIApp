@@ -1,0 +1,128 @@
+<!-- navBar -->
+<nav class="navBar">
+    <div class="title">
+      <p> ProductUIApp</p>
+    </div>
+    <div class="navigation">
+      <ul>
+        <li><a href="viewProduct">View Product</a></li>
+        <li><a href="addProduct">AddProduct</a></li>
+      
+      </ul>
+    </div>
+  </nav>
+  
+  <!-- form -->
+  <div class="my-2" style="width: 90%; padding-left: 30%">
+    <h1>Edit Product</h1>
+    <div class="row">
+      <div class="col-5">
+        <form #form="ngForm" novalidate >
+            <div class="mb-1">
+                <label for="ProductId" class="form-label">ProductId </label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="ProductId"
+                  name="ProductId"
+                  [(ngModel)]="productDetails.productId"
+                  readonly
+                />
+              </div>
+  
+          <div class="mb-1">
+            <label for="Name" class="form-label">Product Name</label>
+            <input required
+              type="text"
+              class="form-control"
+              id="Name"
+              #name="ngModel"
+              [class.is-invalid]="name.invalid && name.touched"
+              name="ProductName"
+              [(ngModel)]="productDetails.productName"
+             
+            />
+             <!-- form validation -->
+        <div class="alert alert-danger" *ngIf="name.invalid && name.touched">
+          <div *ngIf="name.errors && name.errors['required']">
+          Name is required  
+          </div>
+
+        </div>
+          </div>
+          <div class="mb-1">
+            <label for="Category" class="form-label">Category</label>
+            <input 
+              type="text"
+              class="form-control"
+              required
+              #category="ngModel"
+              [class.is-invalid]="category.invalid && category.touched"
+              id="Category"
+              name="category"
+              [(ngModel)]="productDetails.category"
+            />
+            <!-- form validation -->
+            <div class="alert alert-danger" *ngIf="category.invalid && category.touched">
+              <div *ngIf="category.errors && category.errors['required']">
+              Category is required  
+              </div>
+    
+            </div>
+          </div>
+          <div class="mb-1">
+            <label for="Specification" class="form-label">Specification</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              #specification="ngModel"
+              [class.is-invalid]="specification.invalid && specification.touched"
+              id="Specification"
+              name="specification"
+              [(ngModel)]="productDetails.specification"
+            />
+             <!-- form validation -->
+            <div class="alert alert-danger" *ngIf="specification.invalid && specification.touched">
+              <div *ngIf="specification.errors && specification.errors['required']">
+                specification is required  
+              </div>
+    
+            </div>
+          </div>
+          <div class="mb-1">
+            <label for="Price" class="form-label">Price</label>
+            <input
+              type="number"
+              class="form-control"
+              required
+              #price="ngModel"
+              [class.is-invalid]="price.invalid && price.touched"
+              id="Price"
+              name="price"
+              [(ngModel)]="productDetails.price"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="QuantityAvailable" class="form-label"
+              >QuantityAvailable</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              required
+              #Quantity="ngModel"
+              [class.is-invalid]="Quantity.invalid && Quantity.touched"
+              id="QuantityAvailable"
+              name="quantityAvailable"
+              [(ngModel)]="productDetails.quantityAvailable"
+            />
+          </div>
+  
+          <button type="submit" class="btn btn-primary ml-5" (click)="updateProductDetails()">Save</button>
+          <button type="button" class="btn btn-danger" (click)="deleteProduct(productDetails.productId)">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

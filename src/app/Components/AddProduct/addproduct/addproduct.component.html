@@ -1,0 +1,109 @@
+<!-- navBar -->
+<nav class="navBar">
+  <div class="title">
+    <p> ProductUIApp</p>
+  </div>
+  <div class="navigation">
+    <ul>
+      <li><a href="viewProduct">View Product</a></li>
+      <!-- <li><a href="addProduct">AddProduct</a></li> -->
+    </ul>
+  </div>
+</nav>
+
+<!-- form -->
+<div class="my-2" style="width: 90%; padding-left: 30%">
+  <h1>Add New Product</h1>
+  <div class="row">
+    <div class="col-5">
+      <form #form="ngForm" (ngSubmit)="addProducts()" novalidate>
+     
+        <div class="mb-1">
+          <label for="Name" class="form-label">Product Name</label>
+          <input
+            type="text"
+            class="form-control"
+            required
+            #name="ngModel"
+            [class.is-invalid]="name.touched && name.invalid"
+            id="Name"
+            name="ProductName"
+            [(ngModel)]="addProduct.productName"
+          />
+                 <!-- form validation -->
+        <div class="alert alert-danger" *ngIf="name.invalid && name.touched">
+          <div *ngIf="name.errors && name.errors['required']">
+          Name is required  
+          </div>
+
+        </div>
+        </div>
+        <div class="mb-1">
+          <label for="Category" class="form-label">Category</label>
+          <input
+            type="text"
+            class="form-control"
+            required
+              #category="ngModel"
+              [class.is-invalid]="category.invalid && category.touched"
+            id="Category"
+            name="category"
+            [(ngModel)]="addProduct.category"
+          />
+           <!-- form validation -->
+           <div class="alert alert-danger" *ngIf="category.invalid && category.touched">
+            <div *ngIf="category.errors && category.errors['required']">
+            Category is required  
+            </div>
+  
+          </div>
+        </div>
+        <div class="mb-1">
+          <label for="Specification" class="form-label">Specification</label>
+          <input
+            type="text"
+            class="form-control"
+            required
+              #specification="ngModel"
+              [class.is-invalid]="specification.invalid && specification.touched"
+            id="Specification"
+            name="specification"
+            [(ngModel)]="addProduct.specification"
+          />
+           <!-- form validation -->
+           <div class="alert alert-danger" *ngIf="specification.invalid && specification.touched">
+            <div *ngIf="specification.errors && specification.errors['required']">
+              specification is required  
+            </div>
+  
+          </div>
+        </div>
+        <div class="mb-1">
+          <label for="Price" class="form-label">Price</label>
+          <input
+            type="number"
+            class="form-control"
+            id="Price"
+            name="price"
+            [(ngModel)]="addProduct.price"
+          />
+          
+        </div>
+        <div class="mb-3">
+          <label for="QuantityAvailable" class="form-label"
+            >QuantityAvailable</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="QuantityAvailable"
+            name="quantityAvailable"
+            [(ngModel)]="addProduct.quantityAvailable"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
